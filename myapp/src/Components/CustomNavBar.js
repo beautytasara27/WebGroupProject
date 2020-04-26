@@ -3,6 +3,7 @@ import {Navbar, Nav} from  'react-bootstrap'
 import {Link} from 'react-router-dom'
 
 export default class CustomNavBar extends Component{
+
     render(){
         return(
         <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" sticky="top">
@@ -10,7 +11,7 @@ export default class CustomNavBar extends Component{
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">
                 <Nav className="ml-auto" justify-content-end="true">
-                    <Link to={'/home'} className="nav-link"> Home </Link>
+                    <Link to={'/'} className="nav-link" > Home </Link>
                     <Link to={'/about'} className="nav-link"> About </Link> 
                     <Link to={'/contact'} className="nav-link"> Contact </Link> 
                     <Link to={'/forum'} className="nav-link"> Forum </Link> 

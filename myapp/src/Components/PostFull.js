@@ -1,25 +1,22 @@
 /* eslint-disable */
 import React,{Component} from 'react'
 import {stories} from '../setup/data.js'
+import {BrowserRouter as Router, Route, useParams} from 'react-router-dom'
 
-export default class PostFull extends Component{
+const Test = ({match})=>(
 
-    render(){
-        return(
-           <div>
-            {stories.map((post) => {
-                if (this.props.id==post.id){
-                return <div>
+    <div>
+        {stories.map((post) => {
+                if (match.params.postId==post.id){
+                return <div key={post.id}>
                     <h1>{post.title}</h1>
                     <img src={post.img} />
                     <p>{post.body}</p>
                 </div>
                 }
             })}
-            <h1>beauty</h1>
-            </div>
-        );
-    }
-        
-    
-}
+            
+    </div>
+)
+
+export default Test

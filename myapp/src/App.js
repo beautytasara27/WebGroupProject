@@ -19,7 +19,7 @@ class App extends Component{
         <Router>
         <div>
           <NavBar/>
-          <Route exact path="/home" component={Home}/>
+          <Route exact path="/" component={Home}/>
           <Route path="/about" component={About}/>
           <Route path="/contact" component={Contact}/>
           <Route path="/login" component={Login}/>
@@ -27,7 +27,7 @@ class App extends Component{
           <Route path="/forum" component={Forum}/>
           <Route path="/forum/create" component={Create}/>
           <Route path="/nomatch" component={NoMatch}/>
-          <Route exact path="/PostFull" component={PostFull}/>
+          <Route path="/PostFull/:postId" component={PostFull}/>
         </div>
         </Router>
         <Footer/>
