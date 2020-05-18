@@ -3,6 +3,9 @@ import {Navbar, Nav} from  'react-bootstrap'
 import {Link} from 'react-router-dom'
 
 export default class CustomNavBar extends Component{
+    constructor(props){
+        super(props);
+    }
 
     render(){
         return(
@@ -17,6 +20,7 @@ export default class CustomNavBar extends Component{
                     <Link to={'/forum'} className="nav-link"> Forum </Link> 
                     <Link to={'/login'} className="nav-link"> Login </Link> 
                     <Link to={'/signup'} className="nav-link"> Sign Up </Link>
+                    <Link to={'/logout'} className="nav-link"> Logout </Link>
                 </Nav>
             </Navbar.Collapse>
         </Navbar>

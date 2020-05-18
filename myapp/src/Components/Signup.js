@@ -2,7 +2,7 @@
 /* eslint-disable */
 import React, { Component } from 'react'
 import {Jumbotron, Form, Container, Row, Col, Button} from 'react-bootstrap'
-import fire from '../config/fire'
+import firebase from '../config/fbConfig'
 export default class Signup extends Component{
     state = {
         email: '',
@@ -22,7 +22,7 @@ export default class Signup extends Component{
       }
       handleSubmit = (e) => {
         e.preventDefault();
-        fire.auth().createUserWithEmailAndPassword(this.state.email, this.state.password).then((u)=>{
+        firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password).then((u)=>{
           console.log(u)
           this.setState({isloggedIn:true})
         }).catch((err)=>{

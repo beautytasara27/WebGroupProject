@@ -11,7 +11,7 @@ import NoMatch from './Components/NoMatch'
 import NavBar from './Components/CustomNavBar'
 import Footer from './Components/Footer'
 import PostFull from './Components/PostFull';
-import fire from './config/fire';
+import firebase from './config/fbConfig';
 
 
 class App extends Component{
@@ -25,7 +25,7 @@ class App extends Component{
     this.authListener();
   }
   authListener(){
-    fire.auth().onAuthStateChanged((user)=>{
+    firebase.auth().onAuthStateChanged((user)=>{
       if (user){
         this.setState({user})
       }
@@ -45,8 +45,8 @@ class App extends Component{
           <Route path="/contact" component={Contact}/>
           <Route path="/login" component={Login}/>
           <Route path="/signup" component={Signup}/>
-          {this.state.user ? (<Route exact path="/forum" component={Forum}/>): (this.history.push('/login'))}  
-          <Route path="/forum/create" component={Create}/>
+          {this.state.user ? (<Route exact path="/forum" component={Forum}/>):(<Route exact path="/forum" component={Forum}/>)}  
+          <Route path="/create" component={Create}/>
           <Route path="/nomatch" component={NoMatch}/>
           <Route path="/PostFull/:postId" component={PostFull}/>
         </div>
@@ -56,6 +56,8 @@ class App extends Component{
     )}
 
 }
+
+
 
 export default App;
 // n order to make use of history in the App component use it with withRouter. You need to make use of 
