@@ -1,15 +1,36 @@
 /* eslint-disable */
 import React ,{Component} from 'react'
-import {stories} from '../setup/data.js'
-import PostFull from './PostFull.js'
-import {Route} from 'react-router-dom'
-import { Row, Col, Container } from 'react-bootstrap'
+import { Row, Col, Container, Jumbotron } from 'react-bootstrap'
 import {BrowserRouter, Link, Switch} from 'react-router-dom'
 import {connect} from 'react-redux';
-class Home extends Component{
+import CreateArticle from './CreateArticle'
+import {firestoreConnect} from 'react-redux-firebase'
+import {compose} from 'redux'
 
+class Home extends Component{
+    constructor(props){
+        super(props);
+        this.state = {
+            viewForm : false,
+            renderCreateArticle : true
+        }
+
+        this.handleClick = this.handleClick.bind(this);
+        this.handleCreateArticleUnmount = this.handleCreateArticleUnmount.bind(this);
+    }
+    handleClick(e){
+        e.preventDefault();
+        return(
+            this.setState({viewForm : true})
+        )
+    }
+    handleCreateArticleUnmount(){
+        this.setState({renderCreateArticle : false});
+    }
     render(){
+        
       const {posts} = this.props;
+      
       const postList = posts.map(post =>{
         return(
             <li key={post.id}>
@@ -26,21 +47,34 @@ class Home extends Component{
                 </Container>
 
             </li>
+        
             
         )
     })
+
     return(
+        
         <div>
-            <ul>{postList}</ul>
+            <Jumbotron>
+                <h2>Add article</h2>
+                <button onClick={this.handleClick}>Add article</button>
+                {this.state.renderCreateArticle && this.state.viewForm ?  <CreateArticle unMountMe = {this.handleCreateArticleUnmount}/> : null}
+            </Jumbotron>
+            <div>
+                <ul>{postList}</ul>
+            </div>
         </div>
     )
     }
 }
 
 const mapStateToProps = (state) => {
+    console.log(state);
     return{
         posts: state.project.posts
     }
   }
 
-export default  connect(mapStateToProps) (Home);
+export default compose(connect(mapStateToProps),
+firestoreConnect([{collection: 'Articles'}])) (Home);
+//compose different higher order components together

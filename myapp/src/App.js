@@ -6,12 +6,13 @@ import Contact from './Components/Contact'
 import Login from './Components/Login'
 import Signup from './Components/Signup'
 import Forum from './Components/Forum'
-import Create from './Components/Create'
+import Create from './Components/CreateThread'
 import NoMatch from './Components/NoMatch'
 import NavBar from './Components/CustomNavBar'
 import Footer from './Components/Footer'
 import PostFull from './Components/PostFull';
 import firebase from './config/fbConfig';
+import CreateArticle from './Components/CreateArticle';
 
 
 class App extends Component{
@@ -47,6 +48,7 @@ class App extends Component{
           <Route path="/signup" component={Signup}/>
           {this.state.user ? (<Route exact path="/forum" component={Forum}/>):(<Route exact path="/forum" component={Forum}/>)}  
           <Route path="/create" component={Create}/>
+          <Route path="/CreateArticle" component={CreateArticle}/>
           <Route path="/nomatch" component={NoMatch}/>
           <Route path="/PostFull/:postId" component={PostFull}/>
         </div>

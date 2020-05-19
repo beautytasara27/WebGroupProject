@@ -1,7 +1,7 @@
 /* eslint-disable */
 import React, { Component } from 'react'
 import {Jumbotron, Container, Row, Col, Button} from 'react-bootstrap'
-import Create from './Create';
+import Create from './CreateThread';
 
 export default class Forum extends Component{
     constructor(props){
